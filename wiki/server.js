@@ -30,9 +30,18 @@ app.use((req, res, next) => {
     next();
 });
 
-// Define routes
-app.get('/', (req, res) => {
-    res.render('index', { content: res.locals.content, lang: res.locals.lang });
+//### Define routes ###
+// List of page paths
+const pages = [
+'/', 
+'test', 
+];
+
+// Dynamically generate routes based on the pages list
+pages.forEach((page) => {
+    app.get(page === '/' ? '/' : `/${page}`, (req, res) => {
+        res.render(page === '/' ? 'index' : page, { content: res.locals.content, lang: res.locals.lang });
+    });
 });
 
 // Start the server
