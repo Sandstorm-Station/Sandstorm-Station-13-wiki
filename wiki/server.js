@@ -1,4 +1,6 @@
 const express = require('express');
+const https = require('https');
+const fs = require('fs');
 const app = express();
 const port = process.env.PORT || 3000;
 
@@ -15,7 +17,7 @@ const PT = require('./localization/pt.json');
 app.use((req, res, next) => {
     const lang = req.query.lang || 'en';
     res.locals.lang = lang;
-    
+
     switch (lang) {
         case 'en':
             res.locals.content = EN;
@@ -26,7 +28,7 @@ app.use((req, res, next) => {
         default:
             res.locals.content = EN; // Fallback to English if lang is not recognized
     }
-    
+
     next();
 });
 
@@ -35,7 +37,14 @@ app.get('/', (req, res) => {
     res.render('index', { content: res.locals.content, lang: res.locals.lang });
 });
 
-// Start the server
-app.listen(port, () => {
-    console.log(`Server is running on http://localhost:${port}`);
+// Read SSL certificate and key
+const options = {
+    key: fs.readFileSync('ssl/private.key'),
+    cert: fs.readFileSync('ssl/certificate.crt'),
+    ca: fs.readFileSync('ssl/ca_bundle.crt')  // optional, depends on certificate provider
+};
+
+// Start the HTTPS server
+https.createServer(options, app).listen(port, () => {
+    console.log(`HTTPS Server is running on https://localhost:${port}`);
 });
