@@ -3,7 +3,7 @@ const https = require('https');
 const fs = require('fs');
 const app = express();
 const port = process.env.PORT || 80;
-const usecert = process.env.CERT  || false;
+const usecert = (process.env.CERT == 1);
 
 // Set the view engine to ejs
 app.set('view engine', 'ejs');
