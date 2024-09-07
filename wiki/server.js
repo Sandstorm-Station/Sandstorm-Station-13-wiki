@@ -39,9 +39,9 @@ app.get('/', (req, res) => {
 
 // Read SSL certificate and key
 const options = {
-    key: fs.readFileSync('ssl/private.key'),
-    cert: fs.readFileSync('ssl/certificate.crt'),
-    ca: fs.readFileSync('ssl/ca_bundle.crt')  // optional, depends on certificate provider
+    key: fs.readFileSync('./ssl/private.key'),
+    cert: fs.readFileSync('./ssl/certificate.crt'),
+    ca: fs.readFileSync('./ssl/ca_bundle.crt')  // optional, depends on certificate provider
 };
 
 // Start the HTTPS server
