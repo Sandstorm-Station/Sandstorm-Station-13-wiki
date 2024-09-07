@@ -3,6 +3,7 @@ const https = require('https');
 const fs = require('fs');
 const app = express();
 const port = process.env.PORT || 80;
+const usecert = process.env.CERT  || false;
 
 // Set the view engine to ejs
 app.set('view engine', 'ejs');
@@ -37,12 +38,17 @@ app.get('/', (req, res) => {
     res.render('index', { content: res.locals.content, lang: res.locals.lang });
 });
 
+options = {};
 // Read SSL certificate and key
-const options = {
-    key: fs.readFileSync('./ssl/private.key'),
-    cert: fs.readFileSync('./ssl/certificate.crt'),
-    ca: fs.readFileSync('./ssl/ca_bundle.crt')  // optional, depends on certificate provider
-};
+if (usecert)
+{
+    options = {
+        key: fs.readFileSync('./ssl/private.key'),
+        cert: fs.readFileSync('./ssl/certificate.crt'),
+        ca: fs.readFileSync('./ssl/ca_bundle.crt')  // optional, depends on certificate provider
+    };
+}
+
 
 // Start the HTTPS server
 https.createServer(options, app).listen(port, () => {
