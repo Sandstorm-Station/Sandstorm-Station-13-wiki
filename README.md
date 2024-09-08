@@ -39,7 +39,9 @@ Follow these steps to get the website running locally:
    ```
 
    This will start the server on `localhost:80`. You can now access the website in your browser by simply typing `localhost` (no need to specify the port number since it's running on port 80).
-
+   
+   **Note:** You might need to run it with ``sudo`` to avoid access denied errors if they show up. If using Windows, elevate the terminal's admin privileges with UAC.
+   
 ### Making Contributions
 
 Now that the server is running, you can start making changes to the website! Here's a breakdown of the project's structure and how you can contribute.
