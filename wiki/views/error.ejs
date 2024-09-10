@@ -73,7 +73,10 @@
                 Computer Name: NT_TERMINAL_112C
                 Network: SSTNET-NODE78
             <% } else { %>
-                <%= error.stack %> 
+                <%= error.stack %>
+                
+                Crash Report Timestamp: <%= new Date().toLocaleString('pt-BR', { timeZone: 'America/Sao_Paulo'}); %> 
+                -----------------------------------------------------------
             <% } %>
             
             For more information, contact your system administrator or Nanotrasen Incident Response at: https://discord.gg/bzMsq5SRQN    
