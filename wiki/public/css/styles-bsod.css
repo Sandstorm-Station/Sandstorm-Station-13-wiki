@@ -1,0 +1,147 @@
+body {
+    background-color: #002fff;
+    color: white;
+}
+
+div.top-bar {
+    background-color: #1b1b1b;
+    position: fixed;
+    top: 5px;
+    left: 5px;
+    right: 5px;
+    text-align: center;
+}
+
+div.right-side {
+    text-align: right;
+    padding-right: 5px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+
+img.background-image {
+    position: fixed;
+    top: 40dvh;
+    bottom: 40dvh;
+    left: 40dvw;
+    right: 40dvw;
+    z-index: -1;
+}
+
+a:link {
+    text-decoration: none;
+    background-color: #3e6189;
+    padding: 0.25em 1em;
+    display: inline-block;
+    color: white;
+    border-radius: 0.1em;
+}
+
+a:hover {
+    background-color: #5c83b0;
+}
+
+a:visited {
+    color: white;
+}
+
+.FatalError {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    padding: 12px;
+    font-size: 12px;
+    font-family: Consolas, monospace;
+    color: #ffffff;
+    background-color: #0000b1;
+    z-index: 1000;
+    overflow: hidden;
+    text-align: center;
+}
+
+.FatalError--visible {
+    display: block !important;
+}
+
+.FatalLogo {
+    display: inline-block;
+    text-align: left;
+    font-size: 10px;
+    line-height: 12px;
+    position: relative;
+    margin: 16px;
+    top: 0;
+    left: 0;
+    animation:
+        FatalError__rainbow 2s linear infinite alternate,
+        FatalError__shadow 4s linear infinite alternate,
+        FatalError__tfmX 3s infinite alternate,
+        FatalError__tfmY 4s infinite alternate;
+    white-space: pre;
+}
+
+.FatalHeader {
+    margin-top: 12px;
+}
+
+.FatalStack {
+    padding-left: 20%;
+    text-align: left;
+    white-space: pre-line;
+    word-break: break-all;
+    margin-top: 24px;
+    margin-bottom: 24px;
+}
+
+.FatalFooter {
+    margin-bottom: 24px;
+}
+
+@keyframes FatalError__rainbow {
+    0% {
+        color: #ff0;
+    }
+
+    50% {
+        color: #0ff;
+    }
+
+    100% {
+        color: #f0f;
+    }
+}
+
+@keyframes FatalError__shadow {
+    0% {
+        left: -2px;
+        text-shadow: 4px 0 #f0f;
+    }
+
+    50% {
+        left: 0px;
+        text-shadow: 0px 0 #0ff;
+    }
+
+    100% {
+        left: 2px;
+        text-shadow: -4px 0 #ff0;
+    }
+}
+
+@keyframes FatalError__tfmX {
+    0% {
+        left: 15px;
+    }
+
+    100% {
+        left: -15px;
+    }
+}
+
+@keyframes FatalError__tfmY {
+    100% {
+        top: -15px;
+    }
+}

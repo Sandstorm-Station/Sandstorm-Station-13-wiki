@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="<%= lang %>">
+<head>
+    <!-- Custom header because of the BSOD effect -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= content.index.title %> </title>
+    <link rel="stylesheet" href="/css/styles-bsod.css">
+    <link rel="stylesheet" href="/css/all.css">
+    <link rel="icon" href="/images/icon.png">
+</head>
+<body>
+
+    <div id="FatalError" class="FatalError">
+        <div class="FatalLogo">
+            ooooo      ooo     .     .oooooo.    .oooooo..o
+            `888b.     `8'   .o8    d8P'  `Y8b  d8P'    `Y8
+            8 `88b.    8  .o888oo 888      888 Y88bo.
+            8   `88b.  8    888   888      888  `"Y8888o.
+            8     `88b.8    888   888      888      `"Y88b
+            8       `888    888 . `88b    d88' oo     .d8P
+            o8o        `8    "888"  `Y8bood8P'  8""88888P'
+        </div>
+        <marquee class="FatalHeader">
+            A fatal exception has occurred at 112C:D232F7B4 in WEBSITE.
+            The current application will be terminated.
+            Send the copy of the following stack trace to an authorized
+            Nanotrasen incident handler at https://github.com/Sandstorm-Station/Sandstorm-Station-13.
+            Alternatively, contact us at https://discord.gg/bzMsq5SRQN.
+            Thank you for your cooperation.
+        </marquee>
+        <div id="FatalStack" class="FatalStack">
+            <b>Fatal Error:</b> A critical exception has occurred at memory address 0x02A80AFC:0xXBA95FF92 in SYSTEM.
+            The current application has encountered an unexpected condition and will now terminate.
+
+            Error Code: 0x0BADF00D
+            Fault Address: 0x112C:D232F7B4
+            <% if (error == "404") { %>Exception Type: RESOURCE_NOT_FOUND (404)<% } else { %>Exception Type: <%= error.name %><% } %>
+            Process ID: NT-401992
+            Module: WEB_APPLICATION.EXE
+            
+            Stacktrace:
+            -----------------------------------------------------------
+            <% if (error == "404") { %>
+                0x00007FFD3A7F8103 - [WEB_APPLICATION.EXE] SYSTEM::Init()
+                0x00007FFD3A7F9C24 - [WEB_APPLICATION.EXE] SYSTEM::LoadCrashScreen()
+                0x00007FFD3A80AB67 - [NT_CORE.dll] KERNEL::HandleFatalError()
+                <% if (error == "404") { %>0x00007FFD3A810B55 - [WEB_APPLICATION.EXE] SYSTEM::MissingResource404()<% } else { %>0x00007FFD3A810B55 - [WEB_APPLICATION.EXE] SYSTEM:: InvalidOperationError()<% } %>
+                0x00007FFD3A812045 - [NT_CORE.dll] KERNEL::TerminateProcess()
+                0x00007FFD3A815678 - [WEB_APPLICATION.EXE] SYSTEM::Shutdown()
+                0x00007FFD3A818DC5 - [NT_CORE.dll] KERNEL::LogToVoid()
+                0x00007FFD3A81AFA1 - [NT_CORE.dll] KERNEL::StackOverflow()
+            
+                Additional Context:
+                -----------------------------------------------------------
+                Fault Module Name: NANOTRASEN
+                Fault Module Version: 3.1.5622.1789
+                Operating System: NTOS Version 18.2 Build 404
+                Hardware: MK-VII-X12 Nanotrasen HyperCore Processor
+                Memory Dump: 256MB Memory Core Dump captured at 0x80000000 to 0x80FFFFFF
+                -----------------------------------------------------------
+                
+                System Data:
+                -----------------------------------------------------------
+                Operating Mode: Web Renderer
+                Memory Usage: 10240MB / 16384MB
+                Disk Space: 47.9GB / 500GB
+                Graphics Driver: NT-EXPRESS V42
+                Crash Report Timestamp: <%= new Date().toLocaleString('pt-BR', { timeZone: 'America/Sao_Paulo'}); %> 
+                -----------------------------------------------------------
+                
+                User: [Redacted]
+                Computer Name: NT_TERMINAL_112C
+                Network: SSTNET-NODE78
+            <% } else { %>
+                <%= error.stack %> 
+            <% } %>
+            
+            For more information, contact your system administrator or Nanotrasen Incident Response at: https://discord.gg/bzMsq5SRQN    
+        </div>
+        <div class="FatalFooter">
+            Nanotrasen (c) 2525-2561
+        </div>
+    </div>
+
+
+</body>
+</html>
+
+
+<!-- Collapsible script for dropdown stuff  -->
+<script>
+var coll = document.getElementsByClassName("collapsible");
+var i;
+for (i = 0; i < coll.length; i++) {
+    coll[i].addEventListener("click", function () {
+        this.classList.toggle("active");
+        var content = this.nextElementSibling;
+        if (content.style.maxHeight) {
+            content.style.maxHeight = null;
+        } else {
+            content.style.maxHeight = content.scrollHeight + "px";
+        }
+    });
+}
+</script>

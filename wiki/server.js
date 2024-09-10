@@ -34,7 +34,7 @@ app.use((req, res, next) => {
 // List of page paths
 const pages = [
 '/', 
-'test', 
+'test',
 ];
 
 // Dynamically generate routes based on the pages list
@@ -47,4 +47,15 @@ pages.forEach((page) => {
 // Start the server
 app.listen(port, () => {
     console.log(`Server is running on http://localhost:${port}`);
+});
+
+// Handle 404 errors (page not found)
+app.use((req, res) => {
+    res.status(404).render('error', { content: res.locals.content, lang: res.locals.lang, error: "404" });
+});
+
+// Handle other errors (500 and others)
+app.use((err, req, res, next) => {
+    console.error(err.stack);
+    res.status(500).render('error', { content: res.locals.content, lang: res.locals.lang, error: err });
 });
