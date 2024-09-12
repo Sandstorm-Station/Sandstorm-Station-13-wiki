@@ -22,14 +22,15 @@ Follow these steps to get the website running locally:
 1. **Clone the repository**:  
    Begin by cloning the repository to your machine:
    ```bash
-   git clone https://github.com/yourusername/sandstorm-website.git
-   cd sandstorm-website/wiki
+   git clone https://github.com/Sandstorm-Station/Sandstorm-Station-13-wiki/
+   cd Sandstorm-Station-13-wiki/wiki
    ```
 
 2. **Install dependencies**:  
-   The project dependencies must be installed in the `wiki/` folder, so the `node_modules` directory is created inside it. Run the following command inside the `wiki/` folder:
+   The project dependencies must be installed in the `wiki/` folder, so the `node_modules` directory is created inside it. Run the following command inside the `wiki/` folder to make sure all dependencies are installed:
    ```bash
-   npm install
+   npm install express
+   npm install ejs
    ```
 
 3. **Run the server**:  
@@ -39,9 +40,7 @@ Follow these steps to get the website running locally:
    ```
 
    This will start the server on `localhost:80`. You can now access the website in your browser by simply typing `localhost` (no need to specify the port number since it's running on port 80).
-   
-   **Note:** You might need to run it with ``sudo`` to avoid access denied errors if they show up. If using Windows, elevate the terminal's admin privileges with UAC.
-   
+
 ### Making Contributions
 
 Now that the server is running, you can start making changes to the website! Here's a breakdown of the project's structure and how you can contribute.
@@ -78,7 +77,7 @@ Now that the server is running, you can start making changes to the website! Her
   public/
   ├── css/
   ├── images/
-  ├── webfonts/
+  ├── webfonts/  
   └── js/
   ```
 
@@ -88,7 +87,7 @@ Now that the server is running, you can start making changes to the website! Her
 
 The website supports multiple languages using a localization system. The language-specific content is stored in the `localization/` folder as JSON files. Currently, there are two languages supported: English (`en.json`) and Portuguese (`pt.json`).
 
-When a user visits the site, they can pass a `?lang=` query parameter in the URL to change the language. For example, `localhost?lang=pt` would load the website in Portuguese.
+When a user visits the site, they pass a `?lang=` query parameter in the URL to change the language. For example, `localhost?lang=pt` would load the local copy of the website in Portuguese.
 
 Example of a localization JSON file:
 ```json
@@ -97,7 +96,7 @@ Example of a localization JSON file:
 }
 ```
 
-The server loads the appropriate file based on the user's language selection and injects it into the EJS templates.
+The server loads the appropriate file based on the user's language selection and injects it into the EJS templates. The user interface for changing language changes this parameter for the user.
 
 ### Workflow
 
@@ -105,4 +104,6 @@ After setting up the environment, you can start editing the EJS files or tweakin
 1. **Nodemon** will automatically restart the server.
 2. Open your browser at `localhost` and hit **F5** to refresh the page to see your changes live.
 
-Feel free to edit the server, styles, or EJS pages—then reload the browser to check out the updates!
+Feel free to edit the server, styles, or EJS pages—then reload the browser to check out the updates
+
+Happy coding! If you have any questions or need help, feel free to reach out.
