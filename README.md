@@ -78,7 +78,7 @@ Now that the server is running, you can start making changes to the website! Her
   public/
   ├── css/
   ├── images/
-  ├── fonts/   # AwesomeFonts and other fonts
+  ├── webfonts/
   └── js/
   ```
 
