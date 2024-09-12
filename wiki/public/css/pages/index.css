@@ -1,0 +1,44 @@
+/* Server Images Container - Base Style */
+#server-images {
+    max-width: 100%; /* Ensure it doesn’t overflow */
+    height: 400px; /* Fixed height for consistent appearance */
+    overflow: hidden; /* Prevent content from overflowing */
+    border: 5px solid rgb(17, 17, 17); /* Dark gray border */
+    border-radius: 15px; /* Rounded corners */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Add shadow for depth */
+    margin: 32px auto; /* Center the carousel horizontally */
+    width: 40vw; /* Default to 40% of viewport width */
+}
+
+/* Responsive adjustments for smaller screens */
+@media (max-width: 768px) {
+    #server-images {
+        width: 90vw; /* For tablets and small laptops, use 90% of the viewport */
+    }
+}
+
+/* Carousel container */
+#carouselShowcase {
+    width: 100%; /* Always fill the width of the parent container */
+    height: 100%; /* Always fill the height of the parent container */
+}
+
+/* Carousel Image Styling */
+.carousel-image {
+    width: 100%; /* Image takes full width */
+    height: 100%; /* Image takes full height */
+    object-fit: cover; /* Crop image if necessary */
+    display: block;
+}
+
+/* Changelog Feed Container */
+#changelog-feed {
+    max-width: 100%; /* Ensure the feed doesn't overflow beyond the container */
+    width: calc(100% - 96px); /* Fixed margin size on both sides */
+    height: 400px; /* Fixed height for the changelog feed */
+    overflow: hidden; /* Prevent content overflow */
+    border: 5px solid rgb(17, 17, 17); /* Dark gray border around the feed */
+    border-radius: 15px; /* Rounded corners for the changelog feed */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Add a subtle shadow for depth */
+    margin: 32px auto; /* Center the feed horizontally */
+}
